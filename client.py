@@ -93,16 +93,13 @@ async def main():
                 except asyncio.TimeoutError:
                     response = "(таймаут)"
                     break
-            if response == "(таймаут)":
-                client2.logger.info("%s; %s; %s", timestamp, message, response)
-            else:
-                client2.logger.info(
-                    "%s; %s; %s; %s",
-                    timestamp,
-                    message,
-                    response_time,
-                    response,
-                )
+            client2.logger.info(
+                "%s; %s; %s; %s",
+                timestamp,
+                message,
+                response_time,
+                response,
+            )
     except KeyboardInterrupt:
         await client1.close_connection()
         await client2.close_connection()
